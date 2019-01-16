@@ -1,0 +1,76 @@
+.source-wrapper {
+  position: absolute;
+  left: -40px;
+  top: 95px;
+}
+
+.source-container {
+  height: 200px;
+  text-align: left;
+  display: flex;
+  flex-flow: column wrap;
+  padding: 10px 10px;
+  border-radius: 5px;
+  width: 1189px;
+  overflow: hidden;
+  border: 1px solid #E0DDD9;
+}
+
+.checkbox-container {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.checkbox {
+  visibility: hidden;
+  margin-right: 15px;
+  z-index: 1000;
+}
+
+.checkbox:checked ~ .checkmark {
+  background-color: #c4dff6;
+  border: 1px solid #c4dff6;
+}
+
+.checkmark {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #E0DDD9;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+}
+
+.checkmark:after {
+  content: '';
+  top: 1.2px;
+  left: 5px;
+  width: 6px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  position: absolute;
+}
+
+.label-icon-source {
+    color: #171a1e;
+    margin-right: 10px;
+}
+
+.inactive {
+  display: none;
+}
+
+.btn-submit {
+  position: absolute;
+  bottom: 0px;
+}

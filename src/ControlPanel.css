@@ -1,0 +1,52 @@
+.control-display-panel {
+  background-color: rgba(224, 221, 217, .5);
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.source-selection-wrapper {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding-left: 20px;
+}
+
+.source-selection {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.label-icon-source {
+  color: #171a1e;
+  margin-right: 10px;
+}
+
+.sources-selected {
+  height: 100%;
+  flex-grow: 1;
+  margin-right: 20px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.selected-sources {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin-right: 5px;
+  border: 1px solid #171a1e;
+  border-radius: 50px;
+}
+
+.icon-delete {
+  font-size: 17px;
+  cursor: pointer;
+}

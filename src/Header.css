@@ -1,0 +1,28 @@
+header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: .5px;
+}
+
+.main-pannel {
+  height: 100px;
+  width: 100%;
+  background-color: #3B3738;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar {
+  height: 30px;
+  width: 250px;
+  border: none;
+  font-size: 20px;
+}
+
+.search-bar:focus {
+  outline: none;
+}
