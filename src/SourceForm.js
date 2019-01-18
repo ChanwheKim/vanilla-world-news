@@ -4,7 +4,7 @@ import './SourceForm.css';
 export class SourceForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       sources: [],
     };
 
@@ -13,15 +13,25 @@ export class SourceForm extends Component {
   }
 
   handleInputChange(event) {
-    let sources = this.state.sources.slice();
+    const sources = this.state.sources.slice();
     const isChecked = event.target.checked;
 
     if (isChecked) {
-      sources.push(event.target.id);
-    } else if(sources.includes(event.target.id)) {
-      sources.splice(sources.indexOf(event.target.id), 1);
+      sources.push({
+        name: event.target.name,
+        id: event.target.id,
+      });
+    } else {
+      sources.splice(sources.indexOf(event.target.name), 1);
+
+      for (let i = 0; i < sources.length; i++) {
+        if (sources[i].name === event.target.name) {
+          sources.splice(i, 1);
+          break;
+        }
+      }
     }
-    
+
     this.setState({sources});
   }
 
@@ -52,7 +62,7 @@ export class SourceForm extends Component {
 function Source({name, id, handleInputChange}) {
   return (
     <label className="checkbox-container">
-      <input className="checkbox" type="checkbox" id={id} onChange={handleInputChange}></input>{name}
+      <input className="checkbox" type="checkbox" name={name} id={id} onChange={handleInputChange}></input>{name}
       <span className="checkmark"></span>
     </label>
   );

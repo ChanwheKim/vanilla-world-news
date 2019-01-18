@@ -2,6 +2,7 @@
   position: absolute;
   left: -40px;
   top: 95px;
+  background-color: #ffffff;
 }
 
 .source-container {
@@ -25,6 +26,8 @@
   text-overflow: ellipsis;
   text-align: left;
   margin-bottom: 5px;
+  user-select: none;
+  cursor: pointer;
 }
 
 .checkbox {

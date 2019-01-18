@@ -3,20 +3,35 @@ import SourceForm from './SourceForm';
 import './ControlPanel.css';
 
 class ControlPanel extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onDateChange = this.onDateChange.bind(this);
+  }
+
   renderSelectedSources(selection) {
-    const selected = selection.map(id => {
-      return <SelectedSources id={id} key={id} />;
+    const selected = selection.map(source => {
+      return <SelectedSources key={source.id} name={source.name} />;
     });
 
     return selected;
   }
 
-  render() {
-    
+  onDateChange(ev) {
+    this.props.onDateChange({
+      type: ev.target.className,
+      date: ev.target.value,
+    });
+  }
 
+  render() {
     return (
       <React.Fragment>
         <div className="control-display-panel">
+          <div className="calendar">
+            <input type="date" className="date-from" onChange={this.onDateChange} />
+            <input type="date" className="date-end" onChange={this.onDateChange} />
+          </div>
           <div className="source-selection-wrapper">
             <div className="source-selection" onClick={this.props.onSourceIconClick}>
               <span className='label-icon-source'>News Source</span>
@@ -36,10 +51,10 @@ class ControlPanel extends Component {
   }
 }
 
-function SelectedSources({id}) {
+function SelectedSources({name}) {
   return (
     <div className="selected-sources">
-      {id}
+      {name}
       <i className="material-icons icon-delete">close</i>
     </div>
   );
