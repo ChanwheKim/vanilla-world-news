@@ -1,0 +1,98 @@
+.modal-background {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, .7);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  position: absolute;
+  width: 950px;
+  height: 450px;
+  background-color: #ffffff;
+  top: 45%;
+  left: 48%;
+  transform: translate(-45%, -45%);
+  border-radius: 5px;
+  padding-left: 0;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  color: #171a1e;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.icon-modal-close {
+  user-select: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  font-size: 25px;
+}
+
+.popup-info {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #E0DDD9;
+}
+
+.popup-img {
+  width: 285px;
+  height: 185px;
+  margin: 40px 10px 30px 10px;
+}
+
+.popup-info span {
+  margin-left: 10px;
+  margin-bottom: 7px;
+}
+
+.popup-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 27px;
+  padding-left: 17px
+}
+
+.popup-content {
+  padding: 10px 30px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-article {
+  display: flex;
+  margin-top: 15px;
+  font-size: 2.3rem;
+  line-height: 2.3rem;
+}
+
+.popup-description,
+.popup-text {
+  padding: 10px 15px;
+  min-height: 230px;
+  width: 290px;
+  text-align: justify;
+}
+
+.popup-description {
+  border-right: .6px solid #E0DDD9;
+}
+.popup-url {
+  font-size: 14px;
+  transform: translateY(15px);
+}
+
+.popup-url:link,
+.popup-url:visited {
+  color: #B9BCC1;
+}

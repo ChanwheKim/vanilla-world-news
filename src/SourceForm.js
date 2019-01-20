@@ -51,10 +51,12 @@ export class SourceForm extends Component {
 
   render() {
     return (
-      <form className="source-container" onSubmit={this.handleSubmit}>
-        {this.props.sources.length !== 0 ? this.renderSourceLists(this.props.sources) : 'loading'}
-        <input className="btn-submit" type="submit" value="submit" />
-      </form>
+      <div className="source-wrapper">
+        <form className="source-container" onSubmit={this.handleSubmit}>
+          {this.props.sources.length !== 0 ? this.renderSourceLists(this.props.sources) : 'loading'}
+          <input className="btn-submit" type="submit" value="submit" />
+        </form>
+      </div>
     );
   }
 }

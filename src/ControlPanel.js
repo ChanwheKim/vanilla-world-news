@@ -5,8 +5,12 @@ import './ControlPanel.css';
 class ControlPanel extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showSourceList: false,
+    }
 
     this.onDateChange = this.onDateChange.bind(this);
+    this.toggleSourceList = this.toggleSourceList.bind(this);
   }
 
   renderSelectedSources(selection) {
@@ -24,6 +28,14 @@ class ControlPanel extends Component {
     });
   }
 
+  toggleSourceList() {
+    this.setState((state) => {
+      return {
+        showSourceList: !state.showSourceList,
+      };
+    });
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -33,7 +45,7 @@ class ControlPanel extends Component {
             <input type="date" className="date-end" onChange={this.onDateChange} />
           </div>
           <div className="source-selection-wrapper">
-            <div className="source-selection" onClick={this.props.onSourceIconClick}>
+            <div className="source-selection" onClick={this.toggleSourceList}>
               <span className='label-icon-source'>News Source</span>
               <i className="material-icons">playlist_add_check</i>
             </div>
@@ -41,10 +53,10 @@ class ControlPanel extends Component {
               {this.props.selected.length !== 0 ? this.renderSelectedSources(this.props.selected) : null }
             </div>
           </div>
-
-          <div className={this.props.sourceDisplayMode ? "source-wrapper" : "source-wrapper inactive"}>
+          {
+            this.state.showSourceList &&
             <SourceForm sources={this.props.sources} onSubmit={this.props.onSubmit} />
-          </div>
+          }
         </div>
       </React.Fragment>
     );

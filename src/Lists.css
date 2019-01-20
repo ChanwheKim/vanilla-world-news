@@ -1,13 +1,33 @@
+.news-list-title {
+  margin-top: 100px !important;
+}
+
 .list-container {
-  padding-top: 30px;
+  padding-top: 5px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
   align-items: center;
+}
+
+.list-control-pannel {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end; 
+  height: 43px;
+}
+
+.icon-list,
+.icon-grid {
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 .list {
   font-family: 'Josefin Sans', sans-serif;
-  height: 160px;
+  height: 190px;
   display: flex;
   flex-direction: row;
   width: 915px;
@@ -15,8 +35,9 @@
   box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
   margin-bottom: 20px;
   border-radius: 7px;
-  transition: all .2s;
+  transition: box-shadow .2s;
   cursor: pointer;
+  align-items: center;
 }
 
 .list:hover {
@@ -25,16 +46,22 @@
 
 .list .article-info {
   width: 600px;
-  margin-right: 15px;
+  margin-right: 25px;
+  transform: translateY(5px);
 }
 
 .list .article-title {
   font-size: 20px;
+  margin-bottom: 20px;
+  letter-spacing: .7px;
 }
 
 .list .article-description {
   font-weight: 300;
-  font-size: 17px;  
+  font-size: 16px;
+  margin-bottom: 13px;
+  text-align: justify;
+  letter-spacing: .7px;
 }
 
 .list .article-img {
@@ -49,6 +76,60 @@
 }
 
 .list .extra-info span {
+  margin-right: 20px;
+  font-size: 13px;
+  color: #B9BCC1;
+}
+
+.card {
+  font-family: 'Josefin Sans', sans-serif;
+  width: 265px;
+  height: 250px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px 10px;
+  box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
+  margin-bottom: 30px;
+  border-radius: 7px;
+  transition: box-shadow .2s;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: 2px 4px 8px 0 rgba(46,61,73,.2);
+}
+
+.card .article-info {
+  margin-right: 15px;
+}
+
+.card .article-title {
+  font-size: 17px;
+}
+
+.card .article-description {
+  display: none;
+}
+
+.card .article-img {
+  display: inline;
+  width: 360px;
+  height: 203px;
+  transform: translate(-50px, 12px);
+}
+
+.card .extra-info {
+  display: block;
+}
+
+.card .extra-info span {
+  display: none;
+}
+
+.card .extra-info span:nth-child(2) {
+  display: inline-block;
   margin-right: 20px;
   font-size: 13px;
   color: #B9BCC1;

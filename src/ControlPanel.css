@@ -10,8 +10,9 @@
 .source-selection-wrapper {
   display: flex;
   align-items: center;
-  height: 40px;
+  height: 50px;
   padding-left: 20px;
+  font-size: 15px;
 }
 
 .source-selection {
@@ -53,7 +54,7 @@
 }
 
 .calendar {
-  height: 28px;
+  height: 50px;
   padding-left: 17px;
   padding-top: 10px;
   margin-bottom: 3px;
@@ -65,10 +66,11 @@
   font-size: 15px;
   letter-spacing: .7px;
   width: 170px;
-  height: 20px;
+  height: 35px;
   padding: 5px;
   border: 1px solid rgba(224, 221, 217, .5);
   border-radius: 3px;
+  background-color: rgba(255, 255, 255, .7);
 }
 
 .date-from {

@@ -3,6 +3,8 @@
   left: -40px;
   top: 95px;
   background-color: #ffffff;
+  z-index: 1000;
+  font-size: 14px;
 }
 
 .source-container {
