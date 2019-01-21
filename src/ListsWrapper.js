@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import ArticleModal from './ArticleModal';
 import './Lists.css';
 import defaultImage from './defaul-img.jpg';
+import TitleSeparator from './TitleSeparator';
 
 class ListsWrapper extends Component {
   constructor(props) {
@@ -29,6 +30,20 @@ class ListsWrapper extends Component {
     window.removeEventListener('scroll', this.handleOnScroll);
   }
 
+  onIconClick(classNames) {
+    const displayType = classNames.contains('icon-list') ? 'list' : 'card';
+
+    this.setState({
+      displayType
+    });
+  }
+
+  toggleModalState() {
+    this.setState((state) => {
+      return { showModal: !state.showModal };
+    });
+  }
+
   handleOnScroll(ev) {
     const listHeight = this.listRef.current.offsetHeight;
     const yOffSet = window.pageYOffset;
@@ -37,12 +52,6 @@ class ListsWrapper extends Component {
     if (paginationHeight <= yOffSet) {
       this.props.onScroll(ev.type);
     }
-  }
-
-  toggleModalState() {
-    this.setState((state) => {
-      return { showModal: !state.showModal };
-    });
   }
 
   handleModalPopUp(ev) {
@@ -76,34 +85,20 @@ class ListsWrapper extends Component {
     return articles;
   }
 
-  onIconClick(ev) {
-    const displayType = ev.target.classList.contains('icon-list') ? 'list' : 'card';
-
-    this.setState({
-      displayType
-    });
-  }
-
   render() {
     const article = this.state.selectedArticle;
 
     return (
-      <div>
-        <div className="separator news-list-title">
-          <div className="separator-title">
-            News List
-            <div className="separator__holder separator__left"></div>
-            <div className="separator__holder separator__right"></div>
-          </div>
-        </div>
+      <Fragment>
+        <TitleSeparator titleName="News List" />
 
-        <div className="list-control-pannel">
-          <i className="material-icons icon-list" onClick={this.onIconClick}>format_list_bulleted</i>
-          <i className="material-icons icon-grid" onClick={this.onIconClick}>grid_on</i>
-        </div>
-        <ul className="list-container" ref={this.listRef}>
-          { this.props.articles.length !== 0 ? this.renderArticleLists() : null }
-        </ul>
+        <List onViewIconClick={this.onIconClick} reference={this.listRef}>
+          {
+            this.props.articles.length !== 0 &&
+            this.renderArticleLists()
+          }
+        </List>
+
         {
           this.state.showModal &&
           <ArticleModal onBackgroundClick={this.toggleModalState}>
@@ -119,21 +114,30 @@ class ListsWrapper extends Component {
                 <div className="popup-description">{article.description}</div>
                 <div className="popup-text">{article.content}</div>
               </div>
-              <a className="popup-url" href={article.url}><p>{article.url}</p></a>
+              <a target="_blank" className="popup-url" href={article.url}><p>{article.url}</p></a>
             </div>
           </ArticleModal>
         }
-      </div>
+      </Fragment>
     );
   }
 }
 
-// function List() {
-//   return (
-
-//   );
-// }
-
+function List({ onViewIconClick, children, reference }) {
+  return (
+    <Fragment>
+      <div className="list-control-pannel">
+        <i className="material-icons icon-list" onClick={(ev) => {onViewIconClick(ev.target.classList)}}>format_list_bulleted</i>
+        <i className="material-icons icon-grid" onClick={(ev) => {onViewIconClick(ev.target.classList)}}>grid_on</i>
+      </div>
+      <ul className="list-container" ref={reference}>
+        {
+          children
+        }
+      </ul>
+    </Fragment>
+  );
+}
 
 function Article({ article, type, onClick, index }) {
   const img = {

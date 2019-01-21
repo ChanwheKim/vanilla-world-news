@@ -30,8 +30,8 @@ class ControlPanelContainer extends Component {
   }
 
   renderSelectedSources() {
-    const { selected } = this.props;
-    const selection = selected.map((source) => {
+    const { sourcesSelected } = this.props;
+    const selection = sourcesSelected.map((source) => {
       return <SelectedSources key={source.id} name={source.name} onSourceDeleteClick={this.props.onSourceDeleteClick} />;
     });
 
@@ -39,13 +39,13 @@ class ControlPanelContainer extends Component {
   }
 
   render() {
-    const { sources, onSubmit, selected } = this.props;
+    const { sources, onSubmit, sourcesSelected } = this.props;
     const { showSourceList } = this.state;
 
     return (
       <ControlPanel onDateChange={this.onDateChange} onSourceBtnClick={this.toggleSourceList}>
         {
-          selected.length !== 0 &&
+          sourcesSelected.length !== 0 &&
           this.renderSelectedSources()
         }
         {

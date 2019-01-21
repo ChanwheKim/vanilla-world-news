@@ -1,0 +1,44 @@
+.separator {
+  font-size: 27px;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  height: 5rem;
+  width: 100% ;
+  margin-top: 50px;
+  margin-bottom: 1.8rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.separator-title {
+  color: #ffffff;
+  background-color: #3B3738;
+  position: relative;
+  display: inline-block;
+  padding: 0 1rem;
+  line-height: 3.8rem;
+  font-size: 2.3rem;
+  border-radius: .3rem;
+  margin-bottom: 3rem;
+  letter-spacing: 1px;
+  padding-top: 2.5px;
+}
+
+.separator__holder {
+  position: absolute;
+  display: block;
+  width: 200rem;
+  top: 50%;
+  border-top: 1px solid #E0DDD9;  
+  content: '';
+}
+
+.separator__right {
+  left: 100%;
+  margin-left: 1rem;
+}
+
+.separator__left {
+  right: 100%;
+  margin-right: 1rem;
+}

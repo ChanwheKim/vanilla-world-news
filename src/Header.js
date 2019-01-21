@@ -37,7 +37,7 @@ const SearchBar = ({ onChange, onKeyDown }) => {
         type="text"
         onChange={ev => onChange(ev.target.value)}
         onKeyDown={onKeyDown}
-        placeholder='Search'
+        placeholder="Search"
       />
     </div>
   );

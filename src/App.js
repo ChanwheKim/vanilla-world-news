@@ -4,7 +4,7 @@ import axios from 'axios';
 import Header from './Header';
 import ControlPanelContainer from './ControlPanelContainer';
 import ListsWrapper from './ListsWrapper';
-import Gallery from './Gallery';
+import HeadlineGallery from './HeadlineGallery';
 import Loader from './Loader';
 import Footer from './Footer';
 
@@ -19,8 +19,8 @@ class App extends Component {
     this.prevSearchTerm = '';
 
     this.state = {
-      articles: [],
-      sources: [],
+      articlesData: [],
+      sourcesData: [],
       selectedSources: [],
       headlines: [],
       dataLoading: false,
@@ -30,7 +30,7 @@ class App extends Component {
       },
     };
 
-    this.handleSource = this.handleSource.bind(this);
+    this.saveSourceData = this.saveSourceData.bind(this);
     this.onSearchValueChange = this.onSearchValueChange.bind(this);
     this.updateSelectedSource = this.updateSelectedSource.bind(this);
     this.getArticles = this.getArticles.bind(this);
@@ -39,7 +39,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getSource();
+    this.getSourceData();
     this.getTopHeadlines();
   }
 
@@ -61,16 +61,16 @@ class App extends Component {
     });
   }
 
-  getSource() {
-    const sourceUrl = 'https://newsapi.org/v2/sources?apiKey=ff15c5d7dadb4d318d1c4c7a170c4e52';
+  getSourceData() {
+    const sourceUrl = 'https://newsapi.org/v2/sources?apiKey=f0c91f036f9b4acbae1c3cff3164e95b';
 
     axios(sourceUrl)
-      .then(this.handleSource)
+      .then(this.saveSourceData)
       .catch(err => alert(err));
   }
 
   getTopHeadlines() {
-    axios('https://newsapi.org/v2/top-headlines?country=us&apiKey=ff15c5d7dadb4d318d1c4c7a170c4e52&pageSize=14')
+    axios('https://newsapi.org/v2/top-headlines?country=us&apiKey=f0c91f036f9b4acbae1c3cff3164e95b&pageSize=14')
       .then((response) => {
         this.setState({
           headlines: response.data.articles,
@@ -87,6 +87,9 @@ class App extends Component {
       let sources = '';
 
       this.dataLoading = true;
+      this.setState({
+        dataLoading: true,
+      });
 
       if (isScrollEvent) {
         searchTerm = this.prevSearchTerm;
@@ -100,10 +103,7 @@ class App extends Component {
         this.page = 1;
       }
 
-      console.log('Ajax request', 'page is: ', this.page, 'searchTerm is', searchTerm);
-      console.log('sources are ', sources);
-
-      const articleUrl = `https://newsapi.org/v2/everything?apiKey=ff15c5d7dadb4d318d1c4c7a170c4e52&sortBY=popularity&pageSize=30&from=${this.state.dates.from}&to=${this.state.dates.to}&q=${searchTerm}${sources}&page=${this.page}`;
+      const articleUrl = `https://newsapi.org/v2/everything?apiKey=f0c91f036f9b4acbae1c3cff3164e95b&sortBY=popularity&pageSize=30&from=${this.state.dates.from}&to=${this.state.dates.to}&q=${searchTerm}${sources}&page=${this.page}`;
 
       axios(articleUrl)
         .then((response) => {
@@ -112,10 +112,10 @@ class App extends Component {
           news = formatDate(news);
 
           this.setState((state) => {
-            const articles = this.page !== 1 ? state.articles.concat(news) : news;
+            const articlesData = this.page !== 1 ? state.articlesData.concat(news) : news;
 
             return {
-              articles,
+              articlesData,
               dataLoading: false,
             };
           }, () => {
@@ -139,8 +139,8 @@ class App extends Component {
     }
   }
 
-  handleSource(response) {
-    const sources = response.data.sources.map(source => {
+  saveSourceData(response) {
+    const sourcesData = response.data.sources.map(source => {
       return {
         id: source.id,
         name: source.name,
@@ -148,8 +148,8 @@ class App extends Component {
     });
 
     this.setState({
-      sources,
-      articles: [],
+      sourcesData,
+      articlesData: [],
     });
   }
 
@@ -178,19 +178,19 @@ class App extends Component {
       <div className="App">
         <Header onChange={this.onSearchValueChange} onEnterDown={this.getArticles} />
         <ControlPanelContainer
-          sources={this.state.sources}
-          selected={this.state.selectedSources}
+          sources={this.state.sourcesData}
+          sourcesSelected={this.state.selectedSources}
           onSubmit={this.updateSelectedSource}
           onDateChange={this.onDateChange}
           onSourceDeleteClick={this.deleteSource}
         />
         {
           this.state.headlines.length !== 0 &&
-          <Gallery headlines={this.state.headlines} />
+          <HeadlineGallery headlines={this.state.headlines} />
         }
         {
-          this.state.articles.length > 0 &&
-          <ListsWrapper articles={this.state.articles} onScroll={this.getArticles} />
+          this.state.articlesData.length > 0 &&
+          <ListsWrapper articles={this.state.articlesData} onScroll={this.getArticles} />
         }
         {
           this.state.dataLoading &&

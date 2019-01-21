@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
 import './Gallery.css';
 import image from './defaul-img.jpg';
+import TitleSeparator from './TitleSeparator';
 
-export default class Gellery extends React.Component {
+export default class HeadlineGallery extends React.Component {
   renderGalleryGrids() {
     return this.props.headlines.map((article, idx) => {
       return <GalleryGrid img={article.urlToImage} num={idx + 1} key={idx} title={article.title} />
@@ -12,13 +13,7 @@ export default class Gellery extends React.Component {
   render() {
     return (
       <Fragment>
-        <div className="separator">
-          <div className="separator-title">
-            The Headlines
-            <div className="separator__holder separator__left"></div>
-            <div className="separator__holder separator__right"></div>
-          </div>
-        </div>
+        <TitleSeparator titleName="The Headlines" />
         <section className='gallery'>
           { this.props.headlines.length !== 0 &&
             this.renderGalleryGrids() }

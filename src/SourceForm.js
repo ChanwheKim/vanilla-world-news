@@ -47,10 +47,9 @@ class SourceForm extends Component {
           }
         }
 
-        this.setState(
-          {sources},
-          () => { this.props.onSubmit(this.state.sources)}
-        );
+        this.setState({
+          sources
+        });
       }
     }
   }
