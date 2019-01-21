@@ -5,9 +5,10 @@
   "description": "World News Aggregator Web with React",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "2.0.5"
+    "react-scripts": "^2.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
