@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import ArticleModal from './ArticleModal';
 import './Lists.css';
+import defaultImage from './defaul-img.jpg';
 
 class ListsWrapper extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       displayType: 'list',
       showModal: false,
@@ -27,13 +29,13 @@ class ListsWrapper extends Component {
     window.removeEventListener('scroll', this.handleOnScroll);
   }
 
-  handleOnScroll() {
+  handleOnScroll(ev) {
     const listHeight = this.listRef.current.offsetHeight;
     const yOffSet = window.pageYOffset;
     const paginationHeight = listHeight - 700;
 
     if (paginationHeight <= yOffSet) {
-      this.props.onScroll();
+      this.props.onScroll(ev.type);
     }
   }
 
@@ -45,7 +47,7 @@ class ListsWrapper extends Component {
 
   handleModalPopUp(ev) {
     const selectedArticle = this.props.articles[parseInt(ev.currentTarget.dataset.idx)];
-    console.log(selectedArticle);
+
     if (this.state.showModal) {
       this.setState((state) => {
         return { showModal: !state.showModal };
@@ -62,7 +64,7 @@ class ListsWrapper extends Component {
 
   renderArticleLists() {
     const articles = this.props.articles.map((article, idx) => {
-      return <List
+      return <Article
         article={article}
         key={article.title + article.author + idx}
         type={this.state.displayType}
@@ -84,6 +86,7 @@ class ListsWrapper extends Component {
 
   render() {
     const article = this.state.selectedArticle;
+
     return (
       <div>
         <div className="separator news-list-title">
@@ -99,12 +102,13 @@ class ListsWrapper extends Component {
           <i className="material-icons icon-grid" onClick={this.onIconClick}>grid_on</i>
         </div>
         <ul className="list-container" ref={this.listRef}>
-          {this.props.articles.length !== 0 ? this.renderArticleLists() : null}
+          { this.props.articles.length !== 0 ? this.renderArticleLists() : null }
         </ul>
-        { this.state.showModal &&
+        {
+          this.state.showModal &&
           <ArticleModal onBackgroundClick={this.toggleModalState}>
             <div className="popup-info">
-              <img className="popup-img" src={article.urlToImage}/>
+              <img className="popup-img" src={article.urlToImage} alt={article.title} />
               <span>Author : {article.author}</span>
               <span>Published : {article.publishedAt}</span>
               <span>Source : {article.source.name}</span>
@@ -124,7 +128,19 @@ class ListsWrapper extends Component {
   }
 }
 
-function List({ article, type, onClick, index }) {
+// function List() {
+//   return (
+
+//   );
+// }
+
+
+function Article({ article, type, onClick, index }) {
+  const img = {
+    backgroundImage: `url(${article.urlToImage}), url(${defaultImage})`,
+    backgroundSize: 'cover',
+  };
+
   return (
     <li className={type} onClick={onClick} data-idx={index}>
       <div className="article-info">
@@ -136,7 +152,7 @@ function List({ article, type, onClick, index }) {
           <span>{article.publishedAt}</span>
         </div>
       </div>
-      <img className="article-img" src={article.urlToImage} alt={article.source.name} />
+      <div className="article-img" style={img} alt={article.title} />
     </li>
   );
 }

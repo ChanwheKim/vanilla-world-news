@@ -9,6 +9,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  position: relative;
 }
 
 .list-control-pannel {
@@ -17,6 +18,7 @@
   justify-content: flex-end;
   align-items: flex-end; 
   height: 43px;
+  margin-bottom: 2.5rem;
 }
 
 .icon-list,
@@ -95,6 +97,7 @@
   transition: box-shadow .2s;
   cursor: pointer;
   overflow: hidden;
+  position: relative
 }
 
 .card:hover {
@@ -103,10 +106,18 @@
 
 .card .article-info {
   margin-right: 15px;
+  /* height: 4.3rem; */
+  height: 6.2rem;
+  background-color: #ffffff;
 }
 
 .card .article-title {
   font-size: 17px;
+  line-height: 2.9rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 25rem;
 }
 
 .card .article-description {
@@ -114,10 +125,13 @@
 }
 
 .card .article-img {
-  display: inline;
-  width: 360px;
-  height: 203px;
-  transform: translate(-50px, 12px);
+  display: inline-block;
+  width: 300px !important;
+  height: 250px;
+  transform: translate(-20px, 17px);
+  position: absolute;
+  top: 55px;
+  left: 0;
 }
 
 .card .extra-info {

@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import './Header.css';
 
-const SearchBar = ({ onChange, onKeyDown }) => {
-  return <input className="search-bar" type="text" onChange={ev => onChange(ev.target.value)} onKeyDown={onKeyDown} />;
-};
-
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -19,14 +15,32 @@ class Header extends Component {
   }
 
   render() {
+    const { onChange } = this.props;
+
     return (
       <header>
+        <h1 className="main-title">Vanilla Times</h1>
         <div className="main-pannel">
-          <SearchBar onChange={this.props.onChange} onKeyDown={this.onEnterPressed} />
+          <SearchBar onChange={onChange} onKeyDown={this.onEnterPressed} />
         </div>
       </header>
     );
   }
 }
+
+const SearchBar = ({ onChange, onKeyDown }) => {
+  return (
+    <div className="search-bar-wrapper">
+      <i className="material-icons icon-search">search</i>
+      <input
+        className="search-bar"
+        type="text"
+        onChange={ev => onChange(ev.target.value)}
+        onKeyDown={onKeyDown}
+        placeholder='Search'
+      />
+    </div>
+  );
+};
 
 export default Header;

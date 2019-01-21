@@ -7,6 +7,15 @@ header {
   letter-spacing: .5px;
 }
 
+.main-title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 4.5rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 2rem;
+  letter-spacing: .7px;
+}
+
 .main-pannel {
   height: 100px;
   width: 100%;
@@ -16,13 +25,29 @@ header {
   align-items: center;
 }
 
+.search-bar-wrapper {
+  position: relative;
+}
+
+.icon-search {
+  position: absolute;
+  top: .7rem;
+  left: .7rem;
+}
+
 .search-bar {
-  height: 30px;
-  width: 250px;
+  height: 3.8rem;
+  width: 25rem;
   border: none;
-  font-size: 20px;
+  font-size: 2rem;
+  font-weight: 300;
+  padding-left: 4rem; 
 }
 
 .search-bar:focus {
   outline: none;
+}
+
+.icon-search {
+
 }

@@ -1,10 +1,16 @@
 .modal-background {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, .7);
   position: fixed;
   top: 0;
   left: 0;
+}
+
+
+.modal-wrapper {
+  position: relative;
+  height: 100%;
 }
 
 .modal {
@@ -23,6 +29,7 @@
   color: #171a1e;
   font-size: 2rem;
   font-weight: 300;
+  animation: popUp .3s;
 }
 
 .icon-modal-close {
@@ -41,6 +48,7 @@
   display: flex;
   flex-direction: column;
   border-right: 1px solid #E0DDD9;
+  font-size: 20px;
 }
 
 .popup-img {
@@ -50,14 +58,17 @@
 }
 
 .popup-info span {
-  margin-left: 10px;
+  margin-left: 2rem;
   margin-bottom: 7px;
+  font-size: 1.3rem;
+  font-weight: 400;
 }
 
 .popup-title {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 27px;
-  padding-left: 17px
+  font-size: 2.7rem;
+  padding-left: 1.7rem;
+  line-height: 4rem;
 }
 
 .popup-content {
@@ -88,11 +99,21 @@
   border-right: .6px solid #E0DDD9;
 }
 .popup-url {
-  font-size: 14px;
+  font-size: 2.1rem;
   transform: translateY(15px);
 }
 
 .popup-url:link,
 .popup-url:visited {
   color: #B9BCC1;
+}
+
+@keyframes popUp {
+  0% {
+    transform: translate(-45%, -45%) scale(.25);
+  }
+
+  100% {
+    transform: translate(-45%, -45%) scale(1);
+  }
 }

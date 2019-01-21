@@ -1,31 +1,45 @@
 .source-wrapper {
   position: absolute;
-  left: -40px;
-  top: 95px;
+  left: -20px;
+  top: 110px;
   background-color: #ffffff;
   z-index: 1000;
   font-size: 14px;
+  box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
 }
 
 .source-container {
-  height: 200px;
+  height: 30rem;
   text-align: left;
   display: flex;
   flex-flow: column wrap;
-  padding: 10px 10px;
+  padding: 10px 10px 20px 10px;
   border-radius: 5px;
-  width: 1189px;
+  width: 1180px;
   overflow: hidden;
-  border: 1px solid #E0DDD9;
+  border: 1px solid #E0DDD9;  
+  position: relative;
+}
+
+.source-carousel {
+  height: 26rem;
+  width: 380rem;
+  font-size: 2rem;
+  padding: 1rem 1rem; 
+  transition: all .2s;
+  position: absolute;
+  left: 0;
 }
 
 .checkbox-container {
   position: relative;
   display: inline-block;
-  width: 200px;
+  width: 16.7rem;
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
+  padding-right: 5px;
+  overflow: hidden;
+  height: 2.2rem;
   text-align: left;
   margin-bottom: 5px;
   user-select: none;
@@ -76,6 +90,45 @@
 }
 
 .btn-submit {
+  display: inline-block;
   position: absolute;
-  bottom: 0px;
+  bottom: 1rem;
+  padding: 5px 5px;
+  left: 1rem;
+  font-size: 1.5rem;
+  width: 90px;
+  height: 2.8rem;
+  border: none;
+  box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
+  background-color: #3B3738;
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-submit:focus {
+  outline: none;
+}
+
+.icon-to-left,
+.icon-to-right {
+  font-size: 4rem;
+  display: inline-block;
+  color: #3B3738;
+  width: 4rem;
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+}
+
+.icon-to-left {
+  transform: rotate(90deg);
+  left: -4.5rem;
+  top: 10rem;
+}
+
+.icon-to-right {
+  transform: rotate(-90deg);
+  top: 10rem;
+  right: -4.5rem;
 }
