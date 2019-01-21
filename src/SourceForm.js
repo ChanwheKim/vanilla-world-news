@@ -11,13 +11,12 @@ class SourceForm extends Component {
 
     this.carousel = React.createRef();
     this.carouselPage = 1;
+    this.isCarouselMoving = false;
 
     this.handleInputSource = this.handleInputSource.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.moveSourceCarousel = this.moveSourceCarousel.bind(this);
     this.renderSourceList = this.renderSourceList.bind(this);
-
-    this.isCarouselMoving = false;
   }
 
   handleInputSource(event) {
@@ -36,7 +35,9 @@ class SourceForm extends Component {
           id: event.target.id,
         });
 
-        this.setState({sources});
+        this.setState({
+          sources,
+        });
       } else {
         sources.splice(sources.indexOf(event.target.name), 1);
 
@@ -48,7 +49,7 @@ class SourceForm extends Component {
         }
 
         this.setState({
-          sources
+          sources,
         });
       }
     }
@@ -79,8 +80,8 @@ class SourceForm extends Component {
     }
   }
 
-  renderSourceList(sources) {
-    const sourceLists = sources.map(source => {
+  renderSourceList(sourcesData) {
+    const sourceLists = sourcesData.map(source => {
       return <Source 
         name={source.name}
         key={source.id}
@@ -99,7 +100,7 @@ class SourceForm extends Component {
           <i className="material-icons icon-to-right" onClick={this.moveSourceCarousel}>arrow_drop_down_circle</i>
         <form className="source-container" onSubmit={this.handleSubmit}>
           <div className="source-carousel" ref={this.carousel}>
-          {this.props.sources.length !== 0 ? this.renderSourceList(this.props.sources) : 'loading..'}
+          {this.props.sourcesData.length !== 0 ? this.renderSourceList(this.props.sourcesData) : 'loading..'}
           </div>
           <input className="btn-submit" type="submit" value="Confirm" />
         </form>
@@ -108,7 +109,7 @@ class SourceForm extends Component {
   }
 }
 
-function Source({name, id, handleInputSource}) {
+function Source({ name, id, handleInputSource }) {
   return (
     <label className="checkbox-container">
       <input className="checkbox" type="checkbox" name={name} id={id} onChange={handleInputSource}></input>{name}

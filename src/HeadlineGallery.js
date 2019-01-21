@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
-import './Gallery.css';
+import './HeadlineGallery.css';
 import image from './defaul-img.jpg';
 import TitleSeparator from './TitleSeparator';
 
 export default class HeadlineGallery extends React.Component {
   renderGalleryGrids() {
     return this.props.headlines.map((article, idx) => {
-      return <GalleryGrid img={article.urlToImage} num={idx + 1} key={idx} title={article.title} />
+      return <GalleryGrid img={article.urlToImage} num={idx + 1} key={article.title + idx} title={article.title} />;
     });
   }
 
@@ -15,8 +15,10 @@ export default class HeadlineGallery extends React.Component {
       <Fragment>
         <TitleSeparator titleName="The Headlines" />
         <section className='gallery'>
-          { this.props.headlines.length !== 0 &&
-            this.renderGalleryGrids() }
+          {
+            this.props.headlines.length !== 0 &&
+            this.renderGalleryGrids()
+          }
         </section>
       </Fragment>
     );

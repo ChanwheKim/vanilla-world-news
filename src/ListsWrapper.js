@@ -34,13 +34,15 @@ class ListsWrapper extends Component {
     const displayType = classNames.contains('icon-list') ? 'list' : 'card';
 
     this.setState({
-      displayType
+      displayType,
     });
   }
 
   toggleModalState() {
     this.setState((state) => {
-      return { showModal: !state.showModal };
+      return {
+        showModal: !state.showModal,
+      };
     });
   }
 
@@ -59,7 +61,9 @@ class ListsWrapper extends Component {
 
     if (this.state.showModal) {
       this.setState((state) => {
-        return { showModal: !state.showModal };
+        return {
+          showModal: !state.showModal,
+        };
       });
     } else {
       this.setState((state) => {

@@ -39,7 +39,7 @@ class ControlPanelContainer extends Component {
   }
 
   render() {
-    const { sources, onSubmit, sourcesSelected } = this.props;
+    const { sourcesData, onSourceSubmit, sourcesSelected } = this.props;
     const { showSourceList } = this.state;
 
     return (
@@ -51,8 +51,8 @@ class ControlPanelContainer extends Component {
         {
           showSourceList &&
           <SourceForm
-            sources={sources}
-            onSubmit={onSubmit}
+            sourcesData={sourcesData}
+            onSubmit={onSourceSubmit}
             closeForm={this.toggleSourceList}
           />
         }

@@ -178,9 +178,9 @@ class App extends Component {
       <div className="App">
         <Header onChange={this.onSearchValueChange} onEnterDown={this.getArticles} />
         <ControlPanelContainer
-          sources={this.state.sourcesData}
+          sourcesData={this.state.sourcesData}
           sourcesSelected={this.state.selectedSources}
-          onSubmit={this.updateSelectedSource}
+          onSourceSubmit={this.updateSelectedSource}
           onDateChange={this.onDateChange}
           onSourceDeleteClick={this.deleteSource}
         />

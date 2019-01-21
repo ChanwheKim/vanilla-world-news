@@ -7,7 +7,6 @@
   left: 0;
 }
 
-
 .modal-wrapper {
   position: relative;
   height: 100%;
@@ -15,8 +14,8 @@
 
 .modal {
   position: absolute;
-  width: 950px;
-  height: 450px;
+  width: 95rem;
+  height: 45rem;
   background-color: #ffffff;
   top: 45%;
   left: 48%;
@@ -35,26 +34,26 @@
 .icon-modal-close {
   user-select: none;
   cursor: pointer;
-  width: 20px;
-  height: 20px;
+  width: 2rem;
+  height: 2rem;
   color: #ffffff;
   position: absolute;
-  right: 25px;
-  top: 20px;
-  font-size: 25px;
+  right: 2.5rem;
+  top: 2rem;
+  font-size: 2.5rem;
 }
 
 .popup-info {
   display: flex;
   flex-direction: column;
   border-right: 1px solid #E0DDD9;
-  font-size: 20px;
+  font-size: 2rem;
 }
 
 .popup-img {
-  width: 285px;
-  height: 185px;
-  margin: 40px 10px 30px 10px;
+  width: 28.5rem;
+  height: 18.5rem;
+  margin: 4rem 1rem 3rem 1rem;
 }
 
 .popup-info span {
@@ -72,8 +71,8 @@
 }
 
 .popup-content {
-  padding: 10px 30px;
-  padding-top: 20px;
+  padding: 1rem 3rem;
+  padding-top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,16 +81,16 @@
 
 .popup-article {
   display: flex;
-  margin-top: 15px;
+  margin-top: 1.5rem;
   font-size: 2.3rem;
   line-height: 2.3rem;
 }
 
 .popup-description,
 .popup-text {
-  padding: 10px 15px;
-  min-height: 230px;
-  width: 290px;
+  padding: 1rem 1.5rem;
+  min-height: 23rem;
+  width: 29rem;
   text-align: justify;
 }
 
