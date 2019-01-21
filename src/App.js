@@ -66,7 +66,7 @@ class App extends Component {
 
     axios(sourceUrl)
       .then(this.saveSourceData)
-      .catch(err => alert(err));
+      .catch(err => alert('Sorry, something went wrong during getting data.'));
   }
 
   getTopHeadlines() {
@@ -107,12 +107,12 @@ class App extends Component {
 
       axios(articleUrl)
         .then((response) => {
-          let news = response.data.articles;
+          let newArticles = response.data.articles;
 
-          news = formatDate(news);
+          newArticles = formatDate(newArticles);
 
           this.setState((state) => {
-            const articlesData = this.page !== 1 ? state.articlesData.concat(news) : news;
+            const articlesData = this.page !== 1 ? state.articlesData.concat(newArticles) : newArticles;
 
             return {
               articlesData,

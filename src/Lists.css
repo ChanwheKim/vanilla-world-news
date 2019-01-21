@@ -1,9 +1,9 @@
 .news-list-title {
-  margin-top: 100px !important;
+  margin-top: 10rem;
 }
 
 .list-container {
-  padding-top: 5px;
+  padding-top: .5rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -17,26 +17,26 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: flex-end; 
-  height: 43px;
+  height: 4.3rem;
   margin-bottom: 2.5rem;
 }
 
 .icon-list,
 .icon-grid {
-  margin-right: 10px;
+  margin-right: 1rem;
   cursor: pointer;
 }
 
 .list {
   font-family: 'Josefin Sans', sans-serif;
-  height: 190px;
+  height: 19rem;
   display: flex;
   flex-direction: row;
-  width: 915px;
-  padding: 10px 10px;
-  box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
-  margin-bottom: 20px;
-  border-radius: 7px;
+  width: 91.5rem;
+  padding: 1rem 1rem;
+  box-shadow: .5rem .5rem 2.5rem 0 rgba(46,61,73,.2);
+  margin-bottom: 2rem;
+  border-radius: .7rem;
   transition: box-shadow .2s;
   cursor: pointer;
   align-items: center;
@@ -47,53 +47,53 @@
 }
 
 .list .article-info {
-  width: 600px;
-  margin-right: 25px;
+  width: 60rem;
+  margin-right: 2.5rem;
   transform: translateY(5px);
 }
 
 .list .article-title {
-  font-size: 20px;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  margin-bottom: 2rem;
   letter-spacing: .7px;
 }
 
 .list .article-description {
   font-weight: 300;
-  font-size: 16px;
-  margin-bottom: 13px;
+  font-size: 1.6rem;
+  margin-bottom: 1.3rem;
   text-align: justify;
   letter-spacing: .7px;
 }
 
 .list .article-img {
-  width: 300px;
-  height: 160px;
+  width: 30rem;
+  height: 16rem;
 }
 
 .list .extra-info {
   display: flex;
   flex-direction: row;
-  padding-right: 10px;
+  padding-right: 1rem;
 }
 
 .list .extra-info span {
-  margin-right: 20px;
-  font-size: 13px;
+  margin-right: 2rem;
+  font-size: 1.3rem;
   color: #B9BCC1;
 }
 
 .card {
   font-family: 'Josefin Sans', sans-serif;
-  width: 265px;
-  height: 250px;
+  width: 26.5rem;
+  height: 25rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 10px 10px;
+  padding: 1rem 1rem;
   box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
-  margin-bottom: 30px;
-  border-radius: 7px;
+  margin-bottom: 3rem;
+  border-radius: .7rem;
   transition: box-shadow .2s;
   cursor: pointer;
   overflow: hidden;
@@ -105,14 +105,13 @@
 }
 
 .card .article-info {
-  margin-right: 15px;
-  /* height: 4.3rem; */
+  margin-right: 1.5rem;
   height: 6.2rem;
   background-color: #ffffff;
 }
 
 .card .article-title {
-  font-size: 17px;
+  font-size: 1.7rem;
   line-height: 2.9rem;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -126,11 +125,11 @@
 
 .card .article-img {
   display: inline-block;
-  width: 300px !important;
-  height: 250px;
+  width: 30rem !important;
+  height: 25rem;
   transform: translate(-20px, 17px);
   position: absolute;
-  top: 55px;
+  top: 5.5rem;
   left: 0;
 }
 
@@ -144,7 +143,7 @@
 
 .card .extra-info span:nth-child(2) {
   display: inline-block;
-  margin-right: 20px;
-  font-size: 13px;
+  margin-right: 2rem;
+  font-size: 1.3rem;
   color: #B9BCC1;
 }

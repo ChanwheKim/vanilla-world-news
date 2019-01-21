@@ -28,7 +28,7 @@ class Header extends Component {
   }
 }
 
-const SearchBar = ({ onChange, onKeyDown }) => {
+function SearchBar({ onChange, onKeyDown }) {
   return (
     <div className="search-bar-wrapper">
       <i className="material-icons icon-search">search</i>
@@ -41,6 +41,6 @@ const SearchBar = ({ onChange, onKeyDown }) => {
       />
     </div>
   );
-};
+}
 
 export default Header;

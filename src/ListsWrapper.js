@@ -95,14 +95,12 @@ class ListsWrapper extends Component {
     return (
       <Fragment>
         <TitleSeparator titleName="News List" />
-
         <List onViewIconClick={this.onIconClick} reference={this.listRef}>
           {
             this.props.articles.length !== 0 &&
             this.renderArticleLists()
           }
         </List>
-
         {
           this.state.showModal &&
           <ArticleModal onBackgroundClick={this.toggleModalState}>
