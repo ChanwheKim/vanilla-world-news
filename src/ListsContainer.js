@@ -3,15 +3,17 @@ import ArticleModal from './ArticleModal';
 import './Lists.css';
 import defaultImage from './defaul-img.jpg';
 import TitleSeparator from './TitleSeparator';
+import PropTypes from 'prop-types';
+import List from './List';
 
-class ListsWrapper extends Component {
+class ListsContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       displayType: 'list',
       showModal: false,
-      selectedArticle: {},
+      selectedArticleIdx: null,
     };
 
     this.listRef = React.createRef();
@@ -57,19 +59,15 @@ class ListsWrapper extends Component {
   }
 
   handleModalPopUp(ev) {
-    const selectedArticle = this.props.articles[parseInt(ev.currentTarget.dataset.idx)];
+    const selectedArticleIdx = ev.currentTarget.dataset.idx;
 
     if (this.state.showModal) {
-      this.setState((state) => {
-        return {
-          showModal: !state.showModal,
-        };
-      });
+      this.setState((state) => ({ showModal: !state.showModal }));
     } else {
       this.setState((state) => {
         return {
           showModal: !state.showModal,
-          selectedArticle,
+          selectedArticleIdx,
         };
       });
     }
@@ -77,20 +75,32 @@ class ListsWrapper extends Component {
 
   renderArticleLists() {
     const articles = this.props.articles.map((article, idx) => {
-      return <Article
-        article={article}
-        key={article.title + article.author + idx}
-        type={this.state.displayType}
-        onClick={this.handleModalPopUp}
-        index={idx}
-      />;
+      const img = {
+        backgroundImage: `url(${article.urlToImage}), url(${defaultImage})`,
+        backgroundSize: 'cover',
+      };
+      
+      return (
+        <li className={this.state.displayType} key={article.title + article.author + idx} onClick={this.handleModalPopUp} data-idx={idx} >
+          <div className="article-info">
+            <h1 className="article-title">{article.title}</h1>
+            <p className="article-description">{article.description}</p>
+            <div className="extra-info">
+              <span>{article.source.name}</span>
+              <span>{article.author}</span>
+              <span>{article.publishedAt}</span>
+            </div>
+          </div>
+          <div className="article-img" style={img} alt={article.title} />
+        </li>
+        );
     });
 
     return articles;
   }
 
   render() {
-    const article = this.state.selectedArticle;
+    const article = this.props.articles[this.state.selectedArticleIdx];
 
     return (
       <Fragment>
@@ -125,42 +135,9 @@ class ListsWrapper extends Component {
   }
 }
 
-function List({ onViewIconClick, children, reference }) {
-  return (
-    <Fragment>
-      <div className="list-control-pannel">
-        <i className="material-icons icon-list" onClick={(ev) => {onViewIconClick(ev.target.classList)}}>format_list_bulleted</i>
-        <i className="material-icons icon-grid" onClick={(ev) => {onViewIconClick(ev.target.classList)}}>grid_on</i>
-      </div>
-      <ul className="list-container" ref={reference}>
-        {
-          children
-        }
-      </ul>
-    </Fragment>
-  );
-}
+export default ListsContainer;
 
-function Article({ article, type, onClick, index }) {
-  const img = {
-    backgroundImage: `url(${article.urlToImage}), url(${defaultImage})`,
-    backgroundSize: 'cover',
-  };
-
-  return (
-    <li className={type} onClick={onClick} data-idx={index}>
-      <div className="article-info">
-        <h1 className="article-title">{article.title}</h1>
-        <p className="article-description">{article.description}</p>
-        <div className="extra-info">
-          <span>{article.source.name}</span>
-          <span>{article.author}</span>
-          <span>{article.publishedAt}</span>
-        </div>
-      </div>
-      <div className="article-img" style={img} alt={article.title} />
-    </li>
-  );
-}
-
-export default ListsWrapper;
+ListsContainer.propType = {
+  articles: PropTypes.array,
+  onScroll: PropTypes.func,
+};

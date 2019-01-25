@@ -1,11 +1,12 @@
 {
   "name": "vanilla-world-news",
   "version": "0.1.0",
-  "author": "Ken Huh <ken@vanillacoding.co>",
+  "author": "Chanwhe Kim",
   "description": "World News Aggregator Web with React",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "gh-pages": "^2.0.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-scripts": "^2.1.3"

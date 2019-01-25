@@ -2,11 +2,17 @@ import React, { Fragment } from 'react';
 import './HeadlineGallery.css';
 import image from './defaul-img.jpg';
 import TitleSeparator from './TitleSeparator';
+import PropTypes from 'prop-types';
 
 export default class HeadlineGallery extends React.Component {
   renderGalleryGrids() {
     return this.props.headlines.map((article, idx) => {
-      return <GalleryGrid img={article.urlToImage} num={idx + 1} key={article.title + idx} title={article.title} />;
+      return (
+        <figure key={article.title + idx} className={`gallery__item gallery__item--${idx + 1}`}>
+          <img src={article.urlToImage || image} className="gallery__img" alt="gallery img" />
+          <span className="healine-title">{article.title}</span>
+        </figure>
+      );
     });
   }
 
@@ -25,11 +31,6 @@ export default class HeadlineGallery extends React.Component {
   }
 }
 
-function GalleryGrid({ title, img, num }) {
-  return (
-    <figure className={`gallery__item gallery__item--${num}`}>
-      <img src={img || image} className="gallery__img" alt="gallery img" />
-      <span className="healine-title">{title}</span>
-    </figure>
-  );
-}
+HeadlineGallery.propTypes = {
+  headlines: PropTypes.array,
+};

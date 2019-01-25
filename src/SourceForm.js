@@ -30,23 +30,13 @@ class SourceForm extends Component {
       const sources = this.state.sources.slice();
 
       if (isChecked) {
-        sources.push({
-          name: event.target.name,
-          id: event.target.id,
-        });
+        sources.push(event.currentTarget.dataset.idx);
 
         this.setState({
           sources,
         });
       } else {
-        sources.splice(sources.indexOf(event.target.name), 1);
-
-        for (let i = 0; i < sources.length; i++) {
-          if (sources[i].name === event.target.name) {
-            sources.splice(i, 1);
-            break;
-          }
-        }
+        sources.splice(sources.indexOf(event.currentTarget.dataset.idx), 1);
 
         this.setState({
           sources,
@@ -81,13 +71,13 @@ class SourceForm extends Component {
   }
 
   renderSourceList(sourcesData) {
-    const sourceLists = sourcesData.map(source => {
-      return <Source 
-        name={source.name}
-        key={source.id}
-        id={source.id}
-        handleInputSource={this.handleInputSource}
-      />;
+    const sourceLists = sourcesData.map((source, idx) => {
+      return (
+        <label className="checkbox-container" key={source.id}>
+          <input className="checkbox" type="checkbox" name={source.name} id={source.id} onChange={this.handleInputSource} data-idx={idx}></input>{source.name}
+          <span className="checkmark"></span>
+        </label>
+      );
     });
 
     return sourceLists;
@@ -107,15 +97,6 @@ class SourceForm extends Component {
       </div>
     );
   }
-}
-
-function Source({ name, id, handleInputSource }) {
-  return (
-    <label className="checkbox-container">
-      <input className="checkbox" type="checkbox" name={name} id={id} onChange={handleInputSource}></input>{name}
-      <span className="checkmark"></span>
-    </label>
-  );
 }
 
 export default SourceForm;

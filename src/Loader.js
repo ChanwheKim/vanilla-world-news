@@ -5,10 +5,9 @@ function Loader() {
   return (
     <div className="loader-wrapper">
       <div className="lds-ring">
-        <div />
-        <div />
-        <div />
-        <div />
+        {
+          new Array(4).fill(<div></div>)
+        }
       </div>
     </div>
   );

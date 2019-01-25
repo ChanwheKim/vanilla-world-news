@@ -1,5 +1,6 @@
 import React from 'react';
 import './ArticleModal.css';
+import PropTypes from 'prop-types';
 
 export default class Modal extends React.Component {
   constructor(props) {
@@ -7,6 +8,7 @@ export default class Modal extends React.Component {
 
     this.onBackgroundClick = this.onBackgroundClick.bind(this);
   }
+
   componentDidMount() {
     window.document.body.style.overflow = 'hidden';
   }
@@ -34,3 +36,7 @@ export default class Modal extends React.Component {
     );
   }
 }
+
+Modal.propTypes = {
+  onBackgroundClick: PropTypes.func,
+};
