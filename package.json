@@ -4,6 +4,7 @@
   "author": "Chanwhe Kim",
   "description": "World News Aggregator Web with React",
   "private": true,
+  "homepage": "https://chanwhekim.github.io/vanilla-world-news",
   "dependencies": {
     "axios": "^0.18.0",
     "gh-pages": "^2.0.1",
@@ -15,6 +16,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
